@@ -38,6 +38,7 @@ exports.getCustomer = function(event, context, callback) {
                 }
             });
         }else{
+            console.log("Found a Customer", data);
             callback(err, data.Item);
         }
     });
@@ -45,6 +46,7 @@ exports.getCustomer = function(event, context, callback) {
 
 
 const loadCustomer = function(id, callback) {
+    console.log("Have to Load Customer:", id);
 
     fetch('https://www.nuskin.com/account-service/api/v1/account/simple/' + id, {
         method: 'GET',
