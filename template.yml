@@ -12,13 +12,7 @@ Resources:
   Customer:
       Type: AWS::Serverless::Function
       Policies:
-       - LambdaTrustRole # Managed Policy
-       - Version: '2012-10-17' # Policy Document
-         Statement:
-           - Effect: Allow
-             Action:
-               - dynamodb:*
-             Resource: 'arn:aws:dynamodb:::table/Customer'
+       - AmazonDynamoDBFullAccess # Managed Policy
       Properties:
         Handler: index.getCustomer
         Runtime: nodejs4.3
