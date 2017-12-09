@@ -5,25 +5,6 @@ AWS.config.update({region: "us-west-2"});
 const docClient = new AWS.DynamoDB.DocumentClient();
 const fetch = require("node-fetch");
 
-/*
-exports.handler = (event, context, callback) => {
-
-    let id = event['pathParameters']['id'];
-
-    const done = (err, res) => callback(null, {
-        statusCode: err ? '400' : '200',
-        body: err ? err.message : JSON.stringify(res),
-        headers: {
-            'Content-Type': 'application/json',
-        },
-    });
-
-    getCustomer(id, context, done);
-};
-*/
-
-
-
 exports.getCustomer = function(event, context, callback) {
     docClient.get({
         TableName: 'Customer',
