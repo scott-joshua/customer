@@ -5,7 +5,7 @@ AWS.config.update({region: "us-west-2"});
 const docClient = new AWS.DynamoDB.DocumentClient();
 const fetch = require("node-fetch");
 
-
+/*
 exports.handler = (event, context, callback) => {
 
     let id = event['pathParameters']['id'];
@@ -18,26 +18,27 @@ exports.handler = (event, context, callback) => {
         },
     });
 
-    getCustomer(id, done);
+    getCustomer(id, context, done);
 };
+*/
 
 
 
-const getCustomer = function(id, callback) {
+exports.getCustomer = function(event, context, callback) {
     docClient.get({
         TableName: 'Customer',
-        Key: {CustomerID: id}
+        Key: {CustomerID: event.CustomerID}
     },  function(err, data) {
         if(!data.Item){
-            loadCustomer(id, function(err, data){
+            loadCustomer(event.CustomerID, function(err, data){
                 if(!err){
-                    getCustomer(id, callback)
+                    exports.getCustomer(event, context,  callback)
                 }else{
                     callback(err, data); //error loading SKU from SAP
                 }
             });
         }else{
-            callback(err, data);
+            callback(err, data.Item);
         }
     });
 };
