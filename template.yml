@@ -6,10 +6,10 @@ Transform:
 Parameters:
   ProjectId:
     Type: String
-    Description: AWS CodeStar projectID used to associate new resources to team members
+    Description: Customer/Account Lookup
 
 Resources:
-  HelloWorld:
+  Customer:
     Type: AWS::Serverless::Function
     Properties:
       Handler: index.handler
@@ -21,10 +21,5 @@ Resources:
         GetEvent:
           Type: Api
           Properties:
-            Path: /
+            Path: /customer/{id}
             Method: get
-        PostEvent:
-          Type: Api
-          Properties:
-            Path: /
-            Method: post
