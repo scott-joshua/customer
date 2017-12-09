@@ -1,11 +1,9 @@
 {
-    "name": "express-HelloWorld",
-    "description": "Hello World ExpressJS WebService",
+    "name": "customer lookup",
+    "description": "customer lookup micro service WebService",
     "version": "0.0.1",
     "private": true,
     "dependencies": {
-        "aws-serverless-express": "latest",
-        "express": "latest",
         "node-fetch": "^1.7.3"
     }
 }
