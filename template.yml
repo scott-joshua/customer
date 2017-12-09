@@ -12,7 +12,7 @@ Resources:
   Customer:
       Type: AWS::Serverless::Function
       Policies:
-       - AWSLambdaExecute # Managed Policy
+       - LambdaTrustRole # Managed Policy
        - Version: '2012-10-17' # Policy Document
          Statement:
            - Effect: Allow
