@@ -11,12 +11,9 @@ Parameters:
 Resources:
   Customer:
       Type: AWS::Serverless::Function
-
       Properties:
         Handler: index.getCustomer
         Runtime: nodejs4.3
         Policies:
-               - AmazonDynamoDBFullAccess # Managed Policy
-        Role:
-          Fn::ImportValue:
-            !Join ['-', [!Ref 'ProjectId', !Ref 'AWS::Region', 'LambdaTrustRole']]
+         - AWSLambdaExecute
+         - AmazonDynamoDBFullAccess # Managed Policy
