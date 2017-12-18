@@ -5,7 +5,7 @@ AWS.config.update({region: "us-west-2"});
 const docClient = new AWS.DynamoDB.DocumentClient();
 const fetch = require("node-fetch");
 
-exports.getCustomer = function(event, context, callback) {
+exports.CustomerInfo = function(event, context, callback) {
     docClient.get({
         TableName: 'Customer',
         Key: {CustomerID: event.CustomerID}
