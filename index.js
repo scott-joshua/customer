@@ -6,6 +6,10 @@ const docClient = new AWS.DynamoDB.DocumentClient();
 const fetch = require("node-fetch");
 
 exports.CustomerInfo = function(event, context, callback) {
+    if(!event.CustomerID){
+        event.CustomerID = event.SoldToMemberID;
+    }
+
     docClient.get({
         TableName: 'Customer',
         Key: {CustomerID: event.CustomerID}
