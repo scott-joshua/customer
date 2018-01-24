@@ -13,7 +13,7 @@ exports.CustomerInfo = function(event, context, callback) {
         if(!data.Item){
             loadCustomer(event.CustomerID, function(err, data){
                 if(!err){
-                    exports.getCustomer(event, context,  callback)
+                    exports.loadCustomer(event, context,  callback)
                 }else{
                     callback(err, data); //error loading SKU from SAP
                 }
